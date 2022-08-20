@@ -1,5 +1,7 @@
 import React from 'react'
 import Card from './card'
+import Earnings from './Earnings'
+import Piechart from './Piechart'
 
 function Dashboard() {
     let cards=[
@@ -41,6 +43,10 @@ function Dashboard() {
                             return <Card card={card}></Card>
                         })
                     }
+                    </div>
+                    <div class="row">
+                      <Earnings/>
+                      <Piechart/>
                     </div>
 
     </div>
