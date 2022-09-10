@@ -29,12 +29,17 @@ function CreateUser() {
       return errors;
     },
     onSubmit :async(values)=>{
+      try{
       await axios .post("https://62ff703934344b6431f96fea.mockapi.io/users",values)
       alert("User created")
       navigate("/portal/users")
+    } 
+    catch(error){
+
     }
     
-  })
+  }
+})
   
   return (
     
