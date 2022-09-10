@@ -92,8 +92,8 @@ function Product() {
                                             <td>{product.color}</td>
                                             <td>{product.price}</td>
                                             <td>
-                                              <Link to={`/portal/viewproduct/${product.id}`} className='btn btn-success'>View</Link>
-                                              <Link to={`/portal/editproduct/${product.id}`} className='btn btn-dark'>Edit</Link>
+                                              <Link to={`/portal/viewproduct/${product.id}`} className='btn btn-success mb-2'>View</Link>
+                                              <Link to={`/portal/editproduct/${product.id}`} className='btn btn-dark ml-2 mb-2'>Edit</Link>
                                               <button onClick={()=>deleteproduct(product.id)} className='btn btn-danger'>Delete</button>
 
                                             </td>
