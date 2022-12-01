@@ -3,6 +3,7 @@ import React from 'react'
 import "./App.css"
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { env } from './config';
 
 function CreateUser() {
   let navigate=useNavigate()
@@ -17,10 +18,10 @@ function CreateUser() {
     },
     validate:(values)=>{
       let errors={};
-      if(values.name==""){
+      if(values.name===""){
         errors.name="Please enter name"
       }
-      if(values.position==""){
+      if(values.position===""){
         errors.position="Please enter position"
       }
       if(values.age<18){
@@ -30,12 +31,12 @@ function CreateUser() {
     },
     onSubmit :async(values)=>{
       try{
-      await axios .post("https://62ff703934344b6431f96fea.mockapi.io/users",values)
+      await axios.post(`${env.api}/user`,values,{headers:{"authorization":window.localStorage.getItem("app-token")}})
       alert("User created")
       navigate("/portal/users")
     } 
     catch(error){
-
+       console.log(error);
     }
     
   }

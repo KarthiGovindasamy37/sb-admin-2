@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, useSearchParams } from 'react-router-dom'
 import axios from 'axios'
+import { env } from './config'
 function Userview() {
     let params=useParams()
     let[user,setuser]=useState({})
@@ -12,12 +13,12 @@ function Userview() {
     },[])
 
     let userdata=async()=>{
-      let userdata = await axios.get(`https://62ff703934344b6431f96fea.mockapi.io/users/${params.id}`)
+      let userdata = await axios.get(`${env.api}/user/${params.id}`,{headers:{"authorization":window.localStorage.getItem("app-token")}})
       setuser(userdata.data)
     }
   return (
     <div>
-      <h1>{`Id : ${params.id}`}</h1>
+      <h1>{`Id : ${user._id}`}</h1>
       <h1>{`Name : ${user.name}`}</h1>
       <h1>{`Position : ${user.position}`}</h1>
       <h1>{`Office : ${user.office}`}</h1>

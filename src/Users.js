@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { env } from './config';
 
 function Users() {
     let[loading,setloading]=useState(false)
@@ -11,7 +12,7 @@ function Users() {
 
     let loaddata=async()=>{
         setloading(true)
-       let users= await axios.get("https://62ff703934344b6431f96fea.mockapi.io/users")
+       let users= await axios.get(`${env.api}/users?limit=100`,{headers:{"authorization":window.localStorage.getItem("app-token")}})
        setdata(users.data);
        setloading(false)
     }
@@ -19,7 +20,7 @@ function Users() {
         try{
        let ask=window.confirm("Confirm delete")     
        if(ask){
-        await axios.delete(`https://62ff703934344b6431f96fea.mockapi.io/users/${id}`)
+        await axios.delete(`${env.api}/user/${id}`,{headers:{"authorization":window.localStorage.getItem("app-token")}})
         let index=data.findIndex((ele)=>ele.id===id)
         data.splice(index,1)
         setdata([...data])
@@ -87,9 +88,9 @@ function Users() {
                             <td>{user.startdate}</td>
                             <td>{user.salary}</td>
                             <td>
-                                <Link to={`/portal/users/${user.id}`} className='btn btn-primary mr-2'>View</Link>
-                                <Link to={`/portal/edit/${user.id}`} className='btn btn-warning mr-2'>Edit</Link>
-                                <button onClick={()=>deleteuser(user.id)} className='btn btn-danger mr-2'>Delete</button>
+                                <Link to={`/portal/users/${user._id}`} className='btn btn-primary mr-2'>View</Link>
+                                <Link to={`/portal/edit/${user._id}`} className='btn btn-warning mr-2'>Edit</Link>
+                                <button onClick={()=>deleteuser(user._id)} className='btn btn-danger mr-2'>Delete</button>
                             </td>
                         </tr>
                         })
