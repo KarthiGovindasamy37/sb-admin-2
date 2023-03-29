@@ -1,8 +1,8 @@
 import { useFormik } from 'formik';
 import React, { useEffect } from 'react'
-import { Navigate, useNavigate, useParams } from 'react-router-dom';
+import {  useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
-import { env } from './config';
+
 function Edituser() {
   let params=useParams()
   let navigate=useNavigate()
@@ -30,9 +30,9 @@ function Edituser() {
           return errors;
         },
         onSubmit :async(values)=>{
-          await axios.put(`${env.api}/user/${params.id}`,values,{headers:{"authorization":window.localStorage.getItem("app-token")}})
+          await axios.put(`https://62e0f951fa8ed271c48b3f82.mockapi.io/Users/${params.id}`,values)
           alert("User details updated")
-          navigate("/portal/users")
+          navigate("/users")
         }
         
       })
@@ -41,7 +41,7 @@ function Edituser() {
       },[])
 
       let userdata=async()=>{
-        let user = await axios.get(`${env.api}/user/${params.id}`,{headers:{"authorization":window.localStorage.getItem("app-token")}})
+        let user = await axios.get(`https://62e0f951fa8ed271c48b3f82.mockapi.io/Users/${params.id}`)
          formik.setValues({
           name:user.data.name,
           position:user.data.position,
