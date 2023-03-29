@@ -33,7 +33,7 @@ function Addproduct() {
           try {
             await axios.post("https://62ff703934344b6431f96fea.mockapi.io/Products",values)
             alert("Product created")
-            navigate("/portal/products")
+            navigate("/products")
         } catch (error) {
             
           }

@@ -1,7 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { env } from './config';
 
 function Users() {
     let[loading,setloading]=useState(false)
@@ -12,7 +11,7 @@ function Users() {
 
     let loaddata=async()=>{
         setloading(true)
-       let users= await axios.get(`${env.api}/users?limit=100`,{headers:{"authorization":window.localStorage.getItem("app-token")}})
+       let users= await axios.get('https://62e0f951fa8ed271c48b3f82.mockapi.io/Users')
        setdata(users.data);
        setloading(false)
     }
@@ -20,7 +19,7 @@ function Users() {
         try{
        let ask=window.confirm("Confirm delete")     
        if(ask){
-        await axios.delete(`${env.api}/user/${id}`,{headers:{"authorization":window.localStorage.getItem("app-token")}})
+        await axios.delete(`https://62e0f951fa8ed271c48b3f82.mockapi.io/Users/${id}`)
         let index=data.findIndex((ele)=>ele.id===id)
         data.splice(index,1)
         setdata([...data])
@@ -36,7 +35,7 @@ function Users() {
     {/* <!-- Page Heading --> */}
     <div className="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 className="h3 mb-0 text-gray-800">Users</h1>
-                        <Link to="/portal/create-user" className="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                        <Link to="/create-user" className="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                                 className="fas fa-download fa-sm text-white-50"></i>Create User</Link>
                     </div>
     {/* <!-- DataTales Example --> */}
@@ -44,7 +43,8 @@ function Users() {
         loading ? <div style={{height:"400px"}} className="d-flex justify-content-center align-items-center">
         <div  className="spinner-border text-primary" role="status">
         </div>
-      </div> : <div className="card shadow mb-4">
+      </div> :
+       <div className="card shadow mb-4">
         <div className="card-header py-3">
             <h6 className="m-0 font-weight-bold text-primary">DataTables Example</h6>
         </div>
@@ -88,9 +88,9 @@ function Users() {
                             <td>{user.startdate}</td>
                             <td>{user.salary}</td>
                             <td>
-                                <Link to={`/portal/users/${user._id}`} className='btn btn-primary mr-2'>View</Link>
-                                <Link to={`/portal/edit/${user._id}`} className='btn btn-warning mr-2'>Edit</Link>
-                                <button onClick={()=>deleteuser(user._id)} className='btn btn-danger mr-2'>Delete</button>
+                                <Link to={`/users/${user.id}`} className='btn btn-primary mr-2'>View</Link>
+                                <Link to={`/edit/${user.id}`} className='btn btn-warning mr-2'>Edit</Link>
+                                <button onClick={()=>deleteuser(user.id)} className='btn btn-danger mr-2'>Delete</button>
                             </td>
                         </tr>
                         })

@@ -44,7 +44,7 @@ function Product() {
     {/* <!-- Page Heading --> */}
     <div className="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 className="h3 mb-0 text-gray-800">Products</h1>
-                        <Link to="/portal/addproduct" className="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                        <Link to="/addproduct" className="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                                 className="fas fa-download fa-sm text-white-50"></i>Add Product</Link>
                     </div>
                     {/* <!-- DataTales Example --> */}
@@ -92,8 +92,8 @@ function Product() {
                                             <td>{product.color}</td>
                                             <td>{product.price}</td>
                                             <td>
-                                              <Link to={`/portal/viewproduct/${product.id}`} className='btn btn-success mb-2'>View</Link>
-                                              <Link to={`/portal/editproduct/${product.id}`} className='btn btn-dark ml-2 mb-2'>Edit</Link>
+                                              <Link to={`/viewproduct/${product.id}`} className='btn btn-success mb-2'>View</Link>
+                                              <Link to={`/editproduct/${product.id}`} className='btn btn-dark ml-2 mb-2'>Edit</Link>
                                               <button onClick={()=>deleteproduct(product.id)} className='btn btn-danger'>Delete</button>
 
                                             </td>

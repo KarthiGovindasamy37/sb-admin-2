@@ -18,17 +18,17 @@ function Sidebar() {
 
 {/* <!-- Nav Item - Dashboard --> */}
 <li className="nav-item active">
-    <Link className="nav-link" to="/portal/dashboard">
+    <Link className="nav-link" to="/dashboard">
         <i className="fas fa-fw fa-tachometer-alt"></i>
         <span>Dashboard</span></Link>
 </li>
 <li className="nav-item active">
-    <Link className="nav-link" to="/portal/users">
+    <Link className="nav-link" to="/users">
         <i className="fas fa-fw fa-tachometer-alt"></i>
         <span>Users</span></Link>
 </li>
 <li className="nav-item active">
-    <Link className="nav-link" to="/portal/products">
+    <Link className="nav-link" to="/products">
         <i className="fas fa-fw fa-tachometer-alt"></i>
         <span>Products</span></Link>
 </li>

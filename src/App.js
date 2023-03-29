@@ -1,11 +1,6 @@
-import logo from './logo.svg';
 import './admin.css'
-import Card from './card';
 import React from 'react';
-import Sidebar from './Sidebar';
-import Topbar from './Topbar';
 import Dashboard from './Dashboard';
-import ReactDOM from "react-dom/client";
 import {
   BrowserRouter,
   Routes,
@@ -13,7 +8,6 @@ import {
 } from "react-router-dom";
 import Users from './Users';
 import CreateUser from './CreateUser';
-import Login from './login';
 import Portal from './Portal';
 import Product from './Product';
 import Userview from './Userview';
@@ -27,8 +21,8 @@ function App() {
     <BrowserRouter>
    
       <Routes>
-        <Route path='/' element={<Login/>}/>
-        <Route path="/portal" element={<Portal/>}>
+        
+        <Route path="/" element={<Portal/>}>
         <Route path='dashboard' element={<Dashboard/>}/>
         <Route path='users' element={<Users/>}/>
         <Route path="users/:id" element={<Userview/>} />

@@ -35,7 +35,7 @@ function Editproduct() {
           try {
             await axios.put(`https://62ff703934344b6431f96fea.mockapi.io/Products/${params.id}`,values)
             alert("Product updated")
-            navigate("/portal/products")
+            navigate("/products")
         } catch (error) {
             
           }
